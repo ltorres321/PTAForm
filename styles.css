@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #2374C1 0%, #1E5A96 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.school-header {
+    background: linear-gradient(135deg, #2374C1 0%, #1E5A96 100%);
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.school-header::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(135deg, #2374C1 0%, #1E5A96 100%);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.school-logo {
+    margin-bottom: 15px;
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+    color: #E8F4FD;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.form-container > form {
+    padding: 40px;
+}
+
+.subtitle {
+    color: #B8D9F5;
+    margin: 0;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus {
+    outline: none;
+    border-color: #2374C1;
+    box-shadow: 0 0 0 3px rgba(35, 116, 193, 0.1);
+}
+
+select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 40px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2374C1 0%, #1E5A96 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(35, 116, 193, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.success-message {
+    text-align: center;
+    padding: 30px 40px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    margin-top: 20px;
+}
+
+.success-message h2 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.success-message p {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.school-footer {
+    background: #f8f9fa;
+    padding: 25px 40px;
+    text-align: center;
+    border-top: 1px solid #e9ecef;
+    margin-top: 20px;
+}
+
+.school-footer p {
+    margin: 5px 0;
+    color: #495057;
+}
+
+.school-footer p:first-child {
+    font-weight: 600;
+    color: #2374C1;
+    font-size: 16px;
+}
+
+.school-footer p:last-child {
+    font-style: italic;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+    font-weight: 500;
+}
+
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .school-header {
+        padding: 25px 20px;
+    }
+    
+    .form-container > form {
+        padding: 30px 20px;
+    }
+    
+    .school-footer {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 16px;
+    }
+    
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+    
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    .submit-btn {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .school-header {
+        padding: 20px 15px;
+    }
+    
+    .form-container > form {
+        padding: 25px 15px;
+    }
+    
+    .school-footer {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 18px;
+    }
+    
+    h2 {
+        font-size: 15px;
+    }
+    
+    .logo-image {
+        width: 45px;
+        height: 45px;
+    }
+}
