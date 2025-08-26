@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    
     function validateField(field) {
         const value = field.value.trim();
         let isValid = true;
