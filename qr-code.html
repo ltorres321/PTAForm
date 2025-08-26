@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form - QR Code</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #2374C1 0%, #1E5A96 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+        }
+        .qr-code {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        h1 {
+            color: #2374C1;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        h2 {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: normal;
+        }
+        .url {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: monospace;
+            word-break: break-all;
+            font-size: 14px;
+            color: #495057;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .instructions h3 {
+            color: #2374C1;
+            margin-bottom: 10px;
+        }
+        .instructions ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            color: #495057;
+        }
+        .print-btn {
+            background: #2374C1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .print-btn:hover {
+            background: #1E5A96;
+        }
+        @media print {
+            body {
+                background: white;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>South Hialeah Elementary School</h1>
+        <h2>Student Information Form - QR Code</h2>
+        
+        <div class="qr-code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://ltorres321.github.io/PTAForm/" 
+                 alt="QR Code for Student Information Form" 
+                 style="border: 1px solid #ddd; border-radius: 8px;">
+        </div>
+        
+        <div class="url">
+            https://ltorres321.github.io/PTAForm/
+        </div>
+        
+        <button class="print-btn" onclick="window.print()">Print QR Code</button>
+        
+        <div class="instructions">
+            <h3>How to Use This QR Code:</h3>
+            <ol>
+                <li>Print this page or display it on a screen</li>
+                <li>Parents can scan the QR code with their phone camera</li>
+                <li>The camera will automatically open the form link</li>
+                <li>Parents can then fill out the form on their mobile device</li>
+            </ol>
+            
+            <h3>Alternative Methods:</h3>
+            <ul>
+                <li>Share the direct link: <strong>https://ltorres321.github.io/PTAForm/</strong></li>
+                <li>Email the link to parents</li>
+                <li>Post the QR code on bulletin boards or newsletters</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
