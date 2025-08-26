@@ -130,6 +130,23 @@ document.addEventListener('DOMContentLoaded', function() {
             successMessage.style.display = 'block';
             successMessage.scrollIntoView({ behavior: 'smooth' });
             
+            // Add countdown timer
+            let countdown = 21;
+            const countdownElement = document.createElement('p');
+            countdownElement.innerHTML = `<small>Form will reset in <strong>${countdown}</strong> seconds...</small>`;
+            countdownElement.style.marginTop = '15px';
+            countdownElement.style.color = 'rgba(255,255,255,0.9)';
+            successMessage.appendChild(countdownElement);
+            
+            const timer = setInterval(() => {
+                countdown--;
+                countdownElement.innerHTML = `<small>Form will reset in <strong>${countdown}</strong> seconds...</small>`;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+            
             // Reset form after delay so users can submit again
             setTimeout(() => {
                 form.reset();
@@ -138,7 +155,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.classList.remove('loading');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Information';
-            }, 8000); // Longer delay to show success message
+                // Remove countdown element for next time
+                if (countdownElement.parentNode) {
+                    countdownElement.parentNode.removeChild(countdownElement);
+                }
+            }, 8000); // 8 second delay
         })
         .catch(error => {
             // Even with no-cors, the submission likely succeeded
@@ -150,6 +171,23 @@ document.addEventListener('DOMContentLoaded', function() {
             successMessage.style.display = 'block';
             successMessage.scrollIntoView({ behavior: 'smooth' });
             
+            // Add countdown timer
+            let countdown = 8;
+            const countdownElement = document.createElement('p');
+            countdownElement.innerHTML = `<small>Form will reset in <strong>${countdown}</strong> seconds...</small>`;
+            countdownElement.style.marginTop = '15px';
+            countdownElement.style.color = 'rgba(255,255,255,0.9)';
+            successMessage.appendChild(countdownElement);
+            
+            const timer = setInterval(() => {
+                countdown--;
+                countdownElement.innerHTML = `<small>Form will reset in <strong>${countdown}</strong> seconds...</small>`;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                }
+            }, 1000);
+            
             // Reset form after delay
             setTimeout(() => {
                 form.reset();
@@ -158,7 +196,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.classList.remove('loading');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Information';
-            }, 8000);
+                // Remove countdown element for next time
+                if (countdownElement.parentNode) {
+                    countdownElement.parentNode.removeChild(countdownElement);
+                }
+            }, 8000); // 8 second delay
         });
     }
 
