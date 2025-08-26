@@ -115,46 +115,26 @@ document.addEventListener('DOMContentLoaded', function() {
         submitBtn.disabled = true;
         submitBtn.textContent = 'Submitting...';
 
-        // Create FormData object
-        const formData = new FormData(form);
+        // Show success message immediately since Google Forms will redirect
+        setTimeout(() => {
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+        }, 1000);
         
-        // Submit to Formspree
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                // Success
-                form.style.display = 'none';
-                successMessage.style.display = 'block';
-                successMessage.scrollIntoView({ behavior: 'smooth' });
-                
-                // Optional: Reset form after delay
-                setTimeout(() => {
-                    form.reset();
-                    form.style.display = 'block';
-                    successMessage.style.display = 'none';
-                    form.classList.remove('loading');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Submit Information';
-                }, 5000);
-            } else {
-                throw new Error('Network response was not ok');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('There was an error submitting the form. Please try again.');
-            
-            // Reset loading state
+        // Submit the form (will open in new tab due to target="_blank")
+        // Google Forms will handle the actual submission
+        form.submit();
+        
+        // Reset form after a delay
+        setTimeout(() => {
+            form.reset();
+            form.style.display = 'block';
+            successMessage.style.display = 'none';
             form.classList.remove('loading');
             submitBtn.disabled = false;
             submitBtn.textContent = 'Submit Information';
-        });
+        }, 6000);
     }
 
     // Add smooth animations

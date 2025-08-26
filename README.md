@@ -1,34 +1,54 @@
 # Student Information Form
 
-A simple, professional web form for collecting parent and student information with free database storage using Formspree.
+A simple, professional web form for collecting parent and student information with free database storage using Google Forms.
 
 ## Features
 
 - ✅ Clean, responsive design that works on all devices
 - ✅ Real-time form validation
 - ✅ Phone number auto-formatting
-- ✅ Free data storage via Formspree
+- ✅ Free data storage via Google Forms
 - ✅ Success/error handling
 - ✅ Professional styling with smooth animations
 
-## Quick Setup (5 minutes)
+## Quick Setup (10 minutes)
 
-### Step 1: Set up Formspree (Free)
+### Step 1: Set up Google Form (Free)
 
-1. Go to [https://formspree.io](https://formspree.io)
-2. Click "Get Started" and create a free account
-3. Once logged in, click "New Form"
-4. Give your form a name (e.g., "Student Information Form")
-5. Copy your form endpoint URL (looks like: `https://formspree.io/f/YOUR_FORM_ID`)
+1. Go to [https://forms.google.com](https://forms.google.com)
+2. Create a new form with these exact fields:
+   - Parent Last Name (Short answer)
+   - Parent First Name (Short answer)
+   - Student Last Name (Short answer)
+   - Student First Name (Short answer)
+   - Grade (Dropdown: PreK, K, 1, 2, 3, 4, 5)
+   - Teacher Name (Short answer)
+   - Phone Number (Short answer)
+   - Email Address (Short answer)
 
-### Step 2: Configure the Form
+### Step 2: Get Field Names from Google Form
+
+1. Open your Google Form and click the "Preview" button (eye icon)
+2. Right-click on the page and select "View Page Source"
+3. Search for `entry.` in the source code
+4. You'll find lines like: `<input type="text" name="entry.123456789"`
+5. Copy each entry number for each field in order
+
+### Step 3: Configure the Form
 
 1. Open `index.html` in a text editor
-2. Find line 13: `<form id="studentForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">`
-3. Replace `YOUR_FORM_ID` with your actual Formspree form ID
-4. Save the file
+2. Replace the placeholder entry numbers with your actual ones:
+   - Line ~26: `name="entry.123456789"` (Parent Last Name)
+   - Line ~32: `name="entry.234567890"` (Parent First Name)
+   - Line ~37: `name="entry.345678901"` (Student Last Name)
+   - Line ~42: `name="entry.456789012"` (Student First Name)
+   - Line ~47: `name="entry.567890123"` (Grade)
+   - Line ~60: `name="entry.678901234"` (Teacher Name)
+   - Line ~65: `name="entry.789012345"` (Phone Number)
+   - Line ~70: `name="entry.890123456"` (Email Address)
+3. Save the file
 
-### Step 3: Deploy Your Form
+### Step 4: Deploy Your Form
 
 **Option A: Upload to any web hosting service**
 - Upload all files (`index.html`, `styles.css`, `script.js`) to your web hosting
@@ -43,13 +63,13 @@ A simple, professional web form for collecting parent and student information wi
 
 **Option C: Local Testing**
 - Simply open `index.html` in your web browser to test locally
-- Note: Form submission will only work when hosted online
+- Note: Form submission will work, but will open Google Forms in a new tab
 
 ## Form Fields
 
 The form collects the following information:
 - Parent Last Name
-- Parent First Name  
+- Parent First Name
 - Student Last Name
 - Student First Name
 - Grade (PreK, K, 1, 2, 3, 4, 5)
@@ -59,27 +79,29 @@ The form collects the following information:
 
 ## Viewing Submitted Data
 
-1. Log into your Formspree account
-2. Click on your form name
-3. View all submissions in the "Submissions" tab
-4. Export data as CSV if needed
+1. Go to your Google Form
+2. Click the "Responses" tab
+3. View all submissions in the spreadsheet or summary view
+4. Export data as CSV or connect to Google Sheets
 
 ## Customization
 
 ### Change Colors
 Edit `styles.css` and modify these CSS variables:
 - Background gradient: Line 8-9
-- Primary color: Line 95 (submit button)
-- Focus color: Line 65
+- Primary color: Line 134 (submit button)
+- Focus color: Line 118
 
 ### Add More Fields
-1. Add the field in `index.html` following the existing pattern
-2. Add validation in `script.js` if needed
+1. Add the field to your Google Form first
+2. Get the new entry ID from the form source
+3. Add the field in `index.html` following the existing pattern
+4. Add validation in `script.js` if needed
 
 ### Change Email Notifications
-1. In Formspree dashboard, go to Settings
-2. Add notification emails
-3. Customize email templates
+1. In Google Forms, go to Settings (gear icon)
+2. Enable "Collect email addresses" if needed
+3. Set up email notifications for new responses
 
 ## Browser Support
 
@@ -87,15 +109,14 @@ Edit `styles.css` and modify these CSS variables:
 - ✅ Mobile browsers
 - ✅ Internet Explorer 11+
 
-## Free Plan Limits
+## Free Plan Benefits
 
-Formspree free plan includes:
-- ✅ 50 submissions per month
-- ✅ Spam protection
+Google Forms is completely free and includes:
+- ✅ Unlimited submissions
+- ✅ Built-in spam protection
 - ✅ Email notifications
-- ✅ Form analytics
-
-Need more? Upgrade to paid plan for unlimited submissions.
+- ✅ Real-time response tracking
+- ✅ Automatic data export to Google Sheets
 
 ## Files Included
 
@@ -107,19 +128,33 @@ Need more? Upgrade to paid plan for unlimited submissions.
 ## Troubleshooting
 
 **Form not submitting?**
-- Check that you replaced `YOUR_FORM_ID` with your actual Formspree ID
-- Ensure the form is hosted online (not just opened locally)
+- Check that you replaced the placeholder entry numbers with your actual Google Form entry IDs
+- Ensure the Google Form URL in the action attribute is correct
+- Make sure your Google Form accepts responses
+
+**Entry numbers not working?**
+- Double-check that you copied the correct entry IDs from your Google Form source
+- Ensure the field order matches between your HTML form and Google Form
+- Try submitting directly to your Google Form to verify it's working
 
 **Styling issues?**
 - Make sure all three files are in the same folder
 - Check that file names match exactly
 
 **Need help?**
-- Check Formspree documentation: https://help.formspree.io/
-- Test your setup with a simple submission first
+- Check Google Forms Help Center: https://support.google.com/forms/
+- Test your setup by submitting directly to your Google Form first
+
+## Important Notes
+
+- The form will open Google Forms in a new tab when submitted
+- Users will see a Google confirmation page after submission
+- All data is stored in your Google account under the form responses
+- You can set up automatic email notifications in Google Forms settings
 
 ---
 
-**Total setup time: ~5 minutes**
+**Total setup time: ~10 minutes**
 **Cost: FREE**
 **Maintenance: None required**
+**Storage: Unlimited with Google account**
