@@ -10,42 +10,47 @@
     <div class="container">
         <div class="form-container">
             <div class="school-header">
+                <div class="language-toggle">
+                    <button type="button" id="langToggle" class="lang-toggle-btn" title="Switch Language / Cambiar Idioma">
+                        🌐 <span id="currentLang">EN</span>
+                    </button>
+                </div>
                 <div class="school-logo">
                     <img src="Assets/she_shark_n.jpg" alt="South Hialeah Elementary School Logo" class="logo-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMjgiIGZpbGw9IiMyMzc0QzEiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iNDQiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0yMiA0NEMzNC4xNSA0NCA0NCAzNC4xNSA0NCAyMkM0NCA5Ljg1IDM0LjE1IDAgMjIgMEM5Ljg1IDAgMCA5Ljg1IDAgMjJDMCAzNC4xNSA5Ljg1IDQ0IDIyIDQ0WiIgZmlsbD0id2hpdGUiLz4KPHN2ZyB4PSI2IiB5PSI2IiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik0xNiAzMkMzMC42IDE4LjQgMTYgNSAxNiA1UzEuNCAyMCAxNiAzMloiIGZpbGw9IiMyMzc0QzEiLz4KPHN2ZyB4PSI4IiB5PSI4IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSI+CjxjaXJjbGUgY3g9IjgiIGN5PSI4IiByPSI2IiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4KPC9zdmc+Cjwvc3ZnPgo8L3N2Zz4=';">
                 </div>
                 <div class="school-info">
-                    <h1>South Hialeah Elementary School</h1>
-                    <h2>Student Information Form</h2>
-                    <p class="subtitle">Please fill out all required information</p>
+                    <h1 data-en="South Hialeah Elementary School" data-es="Escuela Primaria South Hialeah">South Hialeah Elementary School</h1>
+                    <h2 data-en="Student Information Form" data-es="Formulario de Información del Estudiante">Student Information Form</h2>
+                    <p class="subtitle" data-en="Please fill out all required information" data-es="Por favor complete toda la información requerida">Please fill out all required information</p>
                 </div>
             </div>
             
             <form id="studentForm" action="https://docs.google.com/forms/d/e/1FAIpQLSf0dIWsjeC5YkftiQMRd43SvoEjFtbZFNW9F4e4smKIrkKBnw/formResponse" method="POST">
                 <div class="form-group">
-                    <label for="parentLastName">Parent Last Name *</label>
+                    <label for="parentLastName" data-en="Parent Last Name *" data-es="Apellido del Padre/Madre *">Parent Last Name *</label>
                     <input type="text" id="parentLastName" name="entry.259843289" required>
                 </div>
 
                 
                 <div class="form-group">
-                    <label for="parentFirstName">Parent First Name *</label>
+                    <label for="parentFirstName" data-en="Parent First Name *" data-es="Nombre del Padre/Madre *">Parent First Name *</label>
                     <input type="text" id="parentFirstName" name="entry.1851525499" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="studentLastName">Student Last Name *</label>
+                    <label for="studentLastName" data-en="Student Last Name *" data-es="Apellido del Estudiante *">Student Last Name *</label>
                     <input type="text" id="studentLastName" name="entry.1585967248" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="studentFirstName">Student First Name *</label>
+                    <label for="studentFirstName" data-en="Student First Name *" data-es="Nombre del Estudiante *">Student First Name *</label>
                     <input type="text" id="studentFirstName" name="entry.1505710063" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="grade">Grade *</label>
+                    <label for="grade" data-en="Grade *" data-es="Grado *">Grade *</label>
                     <select id="grade" name="entry.2045212426" required>
-                        <option value="">Select Grade</option>
+                        <option value="" data-en="Select Grade" data-es="Seleccionar Grado">Select Grade</option>
                         <option value="Pre-K">Pre-K</option>
                         <option value="K">K</option>
                         <option value="1">1</option>
@@ -57,30 +62,30 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="teacherName">Teacher Name</label>
+                    <label for="teacherName" data-en="Teacher Name" data-es="Nombre del Maestro/a">Teacher Name</label>
                     <input type="text" id="teacherName" name="entry.421693342">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="entry.698670895" placeholder="(xxx) xxx-xxxx" required>
+                    <label for="phone" data-en="Phone Number *" data-es="Número de Teléfono *">Phone Number *</label>
+                    <input type="tel" id="phone" name="entry.698670895" placeholder="(xxx) xxx-xxxx" data-placeholder-en="(xxx) xxx-xxxx" data-placeholder-es="(xxx) xxx-xxxx" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email Address *</label>
+                    <label for="email" data-en="Email Address *" data-es="Dirección de Correo *">Email Address *</label>
                     <input type="email" id="email" name="entry.2043463946" required>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="submit-btn">Submit Information</button>
+                    <button type="submit" class="submit-btn" data-en="Submit Information" data-es="Enviar Información">Submit Information</button>
                 </div>
             </form>
 
             <div id="successMessage" class="success-message" style="display: none;">
-                <h2>Thank you!</h2>
-                <p>Your information has been successfully submitted to South Hialeah Elementary School.</p>
-                <p>We will contact you soon regarding your submission.</p>
-                <p><small>You can submit another form by waiting for the page to reset, or <a href="." style="color: white; text-decoration: underline;">click here</a> to start over immediately.</small></p>
+                <h2 data-en="Thank you!" data-es="¡Gracias!">Thank you!</h2>
+                <p data-en="Your information has been successfully submitted to South Hialeah Elementary School." data-es="Su información ha sido enviada exitosamente a la Escuela Primaria South Hialeah.">Your information has been successfully submitted to South Hialeah Elementary School.</p>
+                <p data-en="We will contact you soon regarding your submission." data-es="Nos pondremos en contacto con usted pronto sobre su envío.">We will contact you soon regarding your submission.</p>
+                <p><small><span data-en="You can submit another form by waiting for the page to reset, or" data-es="Puede enviar otro formulario esperando que se reinicie la página, o">You can submit another form by waiting for the page to reset, or</span> <a href="." style="color: white; text-decoration: underline;" data-en="click here" data-es="haga clic aquí">click here</a> <span data-en="to start over immediately." data-es="para comenzar de nuevo inmediatamente.">to start over immediately.</span></small></p>
             </div>
             
             <div class="school-footer">

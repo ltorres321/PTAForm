@@ -2,6 +2,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('studentForm');
     const submitBtn = form.querySelector('.submit-btn');
     const successMessage = document.getElementById('successMessage');
+    
+    // Language toggle functionality
+    const langToggle = document.getElementById('langToggle');
+    const currentLangSpan = document.getElementById('currentLang');
+    let currentLanguage = localStorage.getItem('formLanguage') || 'en';
+    
+    // Set initial language
+    updateLanguage(currentLanguage);
+    
+    // Language toggle event listener
+    langToggle.addEventListener('click', function() {
+        currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+        updateLanguage(currentLanguage);
+        localStorage.setItem('formLanguage', currentLanguage);
+    });
+    
+    function updateLanguage(lang) {
+        currentLangSpan.textContent = lang.toUpperCase();
+        
+        // Update all elements with data-en and data-es attributes
+        document.querySelectorAll('[data-en][data-es]').forEach(element => {
+            const text = element.getAttribute(`data-${lang}`);
+            if (text) {
+                element.textContent = text;
+            }
+        });
+        
+        // Update placeholders
+        document.querySelectorAll('[data-placeholder-en][data-placeholder-es]').forEach(element => {
+            const placeholder = element.getAttribute(`data-placeholder-${lang}`);
+            if (placeholder) {
+                element.placeholder = placeholder;
+            }
+        });
+        
+        // Update form validation messages
+        updateValidationMessages(lang);
+    }
+    
+    function updateValidationMessages(lang) {
+        const messages = {
+            en: {
+                required: 'This field is required',
+                email: 'Please enter a valid email address',
+                phone: 'Please enter a valid phone number',
+                name: 'Name must be at least 2 characters',
+                countdown: 'Form will reset in',
+                seconds: 'seconds...'
+            },
+            es: {
+                required: 'Este campo es obligatorio',
+                email: 'Por favor ingrese una dirección de correo válida',
+                phone: 'Por favor ingrese un número de teléfono válido',
+                name: 'El nombre debe tener al menos 2 caracteres',
+                countdown: 'El formulario se reiniciará en',
+                seconds: 'segundos...'
+            }
+        };
+        
+        // Store messages for use in validation
+        window.validationMessages = messages[lang];
+    }
 
     // Phone number formatting
     const phoneInput = document.getElementById('phone');
@@ -66,10 +128,18 @@ document.addEventListener('DOMContentLoaded', function() {
             existingError.remove();
         }
 
+        // Get current validation messages
+        const messages = window.validationMessages || {
+            required: 'This field is required',
+            email: 'Please enter a valid email address',
+            phone: 'Please enter a valid phone number',
+            name: 'Name must be at least 2 characters'
+        };
+
         // Required field validation
         if (field.hasAttribute('required') && !value) {
             isValid = false;
-            errorMessage = 'This field is required';
+            errorMessage = messages.required;
         }
 
         // Specific field validations
@@ -77,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(value)) {
                 isValid = false;
-                errorMessage = 'Please enter a valid email address';
+                errorMessage = messages.email;
             }
         }
 
@@ -85,14 +155,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const phonePattern = /^\(\d{3}\) \d{3}-\d{4}$/;
             if (!phonePattern.test(value)) {
                 isValid = false;
-                errorMessage = 'Please enter a valid phone number';
+                errorMessage = messages.phone;
             }
         }
 
         if (value && field.id.includes('Name') && field.hasAttribute('required')) {
             if (value.length < 2) {
                 isValid = false;
-                errorMessage = 'Name must be at least 2 characters';
+                errorMessage = messages.name;
             }
         }
 
@@ -174,14 +244,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add countdown timer
             let countdown = 8;
             const countdownElement = document.createElement('p');
-            countdownElement.innerHTML = `<small>Form will reset in <strong>${countdown}</strong> seconds...</small>`;
+            const messages = window.validationMessages || { countdown: 'Form will reset in', seconds: 'seconds...' };
+            countdownElement.innerHTML = `<small>${messages.countdown} <strong>${countdown}</strong> ${messages.seconds}</small>`;
             countdownElement.style.marginTop = '15px';
             countdownElement.style.color = 'rgba(255,255,255,0.9)';
             successMessage.appendChild(countdownElement);
             
             const timer = setInterval(() => {
                 countdown--;
-                countdownElement.innerHTML = `<small>Form will reset in <strong>${countdown}</strong> seconds...</small>`;
+                countdownElement.innerHTML = `<small>${messages.countdown} <strong>${countdown}</strong> ${messages.seconds}</small>`;
                 
                 if (countdown <= 0) {
                     clearInterval(timer);
